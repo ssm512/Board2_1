@@ -4,4 +4,38 @@
 
 <mapper namespace="com.green.menus.mapper.MenuMapper" >
 
+	<select id="getMenuList" resultType="com.green.menus.dto.MenuDTO">
+		SELECT    MENU_ID, MENU_NAME, MENU_SEQ
+	 	FROM      MENUS
+	 	ORDER BY  MENU_SEQ ASC
+	</select>
+	
+	<select id ="getMenu">
+		SELECT    MENU_ID, MENU_NAME, MENU_SEQ
+	 	FROM      MENUS
+		WHERE	  MENU_ID = #{menu_id}
+	</select>
+	
+	<insert id="insertMenu">
+		INSERT INTO MENUS VALUES (#{menu_id}, #{menu_name}, #{menu_seq})
+	</insert>
+	
+	<insert id="insertMenu2">
+		INSERT INTO MENUS (menu_id, menu_name, menu_seq) VALUES (
+			(SELECT 'MENU' || TRIM( TO_CHAR(NVL(MAX(SUBSTR(menu_id, 5,2)), 0) +1, '00')    ) FROM MENUS),
+			#{menu_name},
+			(SELECT NVL( MAX(MENU_SEQ), 0) + 1 FROM MENUS)
+		)
+	</insert>
+	
+	<delete id="deleteMenu">
+		DELETE FROM MENUS WHERE menu_id = #{menu_id}
+	</delete>
+	
+	<update id="updateMenu">
+		UPDATE MENUS 
+  		SET	menu_name = #{menu_name},
+  	 		 menu_seq = #{menu_seq} 
+  		WHERE menu_id = #{menu_id}
+	</update>
 </mapper>
