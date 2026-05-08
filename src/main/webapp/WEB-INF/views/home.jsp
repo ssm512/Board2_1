@@ -15,6 +15,10 @@
 		<div><a href="/Menus/WriteForm">새 메뉴추가</a></div>
 		<div><a href="/Menus/WriteForm2">새 메뉴추가2</a></div>
 		<div>&nbsp;</div>
+		<div><a href="/Users/List">사용자목록</a></div>
+		<div><a href="/Users/WriteForm">사용자추가</a></div>
+		<div><a href="/Users/IdDupCheck2?userid=sky" target="_blank">아이디 중복 테스트</a></div>
+		<div>&nbsp;</div>
 	</main>
 </body>
 </html>
