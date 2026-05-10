@@ -13,4 +13,8 @@ public interface UserMapper {
 
 	void insertUser(UserDTO userDTO);
 
+	UserDTO getIdDupCheck(UserDTO userDTO);
+
+	UserDTO getUser(UserDTO userDTO);
+
 }

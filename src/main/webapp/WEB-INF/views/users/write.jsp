@@ -108,7 +108,7 @@
 		let url	=	'/Users/DupCheckWindow';
 		let	target	=	'dupcheck';
 		let feature	=	'left=600, top=200, width=400, height=300';
-		window.open(url,target, feature)
+		window.open(url, target, feature)
 	})
 	</script>
 	

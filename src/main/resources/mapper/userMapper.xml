@@ -15,9 +15,33 @@
 	FROM TUSER  
   </select>
   
+  <select id="getIdDupCheck">
+ 	SELECT 	USERID,
+			PASSWORD,
+  			USERNAME,
+			EMAIL,
+			UPOINT,
+			TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE 
+	FROM	tuser
+	WHERE	userid=#{userid}
+  </select>
+  
+  <select id="getUser">
+  	SELECT 		USERID,
+				PASSWORD,
+  				USERNAME,
+				EMAIL,
+				UPOINT,
+				TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE
+	FROM		tuser
+	WHERE		userid = #{userid} 
+  </select>
+  
   <insert id="insertUser">
   	INSERT INTO TUSER 
   	VALUES (#{userid}, #{password}, #{username}, #{email}, 1000, SYSDATE);
   </insert>
+  
+  
   
   </mapper>
