@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Users List</title>
+<link href="/css/common.css" rel="stylesheet" >
 </head>
 <body>
 <main>

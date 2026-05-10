@@ -27,4 +27,22 @@ public class UserController {
 		mv.addObject("userList", userList);
 		return mv;
 	}
+	
+	// /Users/WriteForm
+	@RequestMapping("/WriteForm")
+	public ModelAndView wirteForm () {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users/write");
+		return mv;
+	}
+	
+	// /Users/Write
+	@RequestMapping("/Write")
+	public ModelAndView write (UserDTO userDTO) {
+		userMapper.insertUser(userDTO);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Users/List");
+		return mv;
+	}
 }

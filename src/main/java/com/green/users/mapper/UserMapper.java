@@ -11,4 +11,6 @@ public interface UserMapper {
 
 	List<UserDTO> getUserList();
 
+	void insertUser(UserDTO userDTO);
+
 }
