@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.users.dto.UserDTO;
 import com.green.users.mapper.UserMapper;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -73,7 +74,6 @@ public class UserController {
 	}
 	
 	
-	
 	// 아이디 중복 확인 - jsp를 return하는게 아닌결과 문자열을 리턴
 	// <b class="green">사용 가능한 아이디 입니다.</b>
 	// <b class="red">사용 불가능한 아이디 입니다.</b>
@@ -86,5 +86,35 @@ public class UserController {
 		if (user == null)
 			user = new UserDTO();
 		return user;
+	}
+
+	//--------------------------------------------------------------
+	// 로그인폼
+	// /Users/LoginForm
+	@RequestMapping("/LoginForm")
+	public String loginForm() {
+		
+		return "users/login";
+	}
+	
+	// 로그인
+	// /Users/Login, userid=, password=
+	@RequestMapping("/Login")
+	public String login (UserDTO userDTO, HttpServletRequest request) {
+		
+		UserDTO user = userMapper.getUser(userDTO);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("login", user);
+		String loc	=	session.getAttribute("loc") + "";
+		return "redirect:"+loc;
+	}
+	
+	@RequestMapping("/Logout")
+	public String logout (HttpServletRequest request) {
+		
+		HttpSession session	=	request.getSession();
+		session.invalidate();
+		return "redirect:/";
 	}
 }
