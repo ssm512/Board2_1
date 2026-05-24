@@ -8,14 +8,11 @@
 </head>
 <body>
 	<main>
-	<form action="/Users/Write" method="post">
+	<form action="/Users/Update" method="post">
 		<table>
 			<tr>
-				<td><span class="red">*</span>사용자 아이디</td>
-				<td>
-				<input type="text" name="userid"/>
-				<input type="button" id="dupCheck1" value="중복확인(새창)" />
-				<input type="button" id="dupCheck2" value="중복확인(Ajax)" />
+				<td>사용자 아이디</td>
+				<td><input type="text" name="userid" value="${ user.userid }"/>
 				</td>
 			</tr>
 			<tr>
